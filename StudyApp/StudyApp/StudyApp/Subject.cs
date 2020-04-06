@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudyWithMe
+namespace StudyApp
 {
     class Subject
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public Card[] Cards { get; set; }
     }

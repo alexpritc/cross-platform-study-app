@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="StudyApp.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="StudyApp" 
+            Margin="20,20,20,20"
+            HorizontalOptions="Center"
+            FontSize="20"/>
+        
+        <Grid>
+            <Label Text="Subjects:"
+                Margin="20,0,0,50"
+                FontSize="18"/>
+            <ListView x:Name="listViewSubjects"
+                Margin="20,20,20,20"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Subject #1</x:String>
+                        <x:String>Subject #2</x:String>
+                        <x:String>Subject #3</x:String>
+                        <x:String>Subject #4</x:String>
+                        <x:String>Subject #5</x:String>
+                        <x:String>Subject #6</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Text}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                <Label Text="{Binding Description}" 
+                                    d:Text="Number of Cards"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Label Text="----------Edit Subjects----------" 
+            Margin="0,0,0,20"
+            HorizontalOptions="Center"
+            FontSize="18"/>
+
+        <Button Text="Create" 
+            Margin="50,0,50,0"
+            x:Name="buttonCreate"
+            Clicked="buttonCreateClicked"/>
+        <Button Text="Delete"      
+            Margin="50,0,50,25"
+            x:Name="buttonDelete"
+            Clicked="buttonDeleteClicked"/>
+
+    </StackLayout>
+
+</ContentPage>

@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{621B0258-8630-498C-87CB-CBD28C479BC4}</ProjectGuid>
+    <ProjectGuid>{4401EF67-1611-4BCE-8FB7-0D44A6D7BBB4}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>StudyWithMe.Droid</RootNamespace>
-    <AssemblyName>StudyWithMe.Android</AssemblyName>
+    <RootNamespace>StudyApp.Droid</RootNamespace>
+    <AssemblyName>StudyApp.Android</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -88,9 +88,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StudyWithMe\StudyWithMe.csproj">
-      <Project>{CDF8AB36-FC44-4290-955C-7643BBA8D43A}</Project>
-      <Name>StudyWithMe</Name>
+    <ProjectReference Include="..\StudyApp\StudyApp.csproj">
+      <Project>{93167F13-D299-4845-80F0-895C289F2E0A}</Project>
+      <Name>StudyApp</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
