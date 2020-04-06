@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SOFT262_Coursework
+namespace StudyWithMe
 {
     public partial class App : Application
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace SOFT262_Coursework.iOS
+namespace StudyWithMe.iOS
 {
     public class Application
     {

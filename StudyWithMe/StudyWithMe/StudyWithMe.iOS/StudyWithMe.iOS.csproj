@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ACF2E40D-6838-4670-B69F-90259151FEE9}</ProjectGuid>
+    <ProjectGuid>{3CEB28EC-78B9-45C4-B836-F08CDC022C53}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SOFT262_Coursework.iOS</RootNamespace>
+    <RootNamespace>StudyWithMe.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>SOFT262 Coursework.iOS</AssemblyName>
+    <AssemblyName>StudyWithMe.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
@@ -127,9 +127,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\SOFT262 Coursework\SOFT262 Coursework.csproj">
-      <Project>{848C5648-7C88-434C-BA0C-9D1A96F49AA7}</Project>
-      <Name>SOFT262 Coursework</Name>
+    <ProjectReference Include="..\StudyWithMe\StudyWithMe.csproj">
+      <Project>{CDF8AB36-FC44-4290-955C-7643BBA8D43A}</Project>
+      <Name>StudyWithMe</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
