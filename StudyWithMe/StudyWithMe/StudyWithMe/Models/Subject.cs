@@ -6,5 +6,7 @@ namespace StudyWithMe
 {
     class Subject
     {
+        public string Name { get; set; }
+        public Card[] Cards { get; set; }
     }
 }
