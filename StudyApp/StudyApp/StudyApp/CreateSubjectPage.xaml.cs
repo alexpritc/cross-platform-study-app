@@ -71,7 +71,7 @@ namespace StudyApp
 
         private void buttonAddClicked(object sender, EventArgs e)
         {
-            displayCards.Add(new Card() { Question = "how are you?", Answer = "good, thanks!" });
+            displayCards.Add(new Card() { Question = "", Answer = "" });
         }
 
         private void buttonRemoveClicked(object sender, EventArgs e)

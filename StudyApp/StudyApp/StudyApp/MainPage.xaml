@@ -15,46 +15,36 @@
 
         <Grid>
             <Label Text="Subjects:"
-                Margin="20,0,0,10"
+                Margin="20,0,0,20"
                 FontSize="18"/>
             <ListView x:Name="listViewSubjects"
                 Margin="20,20,20,20"
-                ItemsSource="{Binding Subjects}"
+                ItemsSource="{Binding Subject}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"
-                ItemSelected="OnSubjectSelected">
-                <!--<d:ListView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Subject #1</x:String>
-                        <x:String>Subject #2</x:String>
-                        <x:String>Subject #3</x:String>
-                        <x:String>Subject #4</x:String>
-                        <x:String>Subject #5</x:String>
-                        <x:String>Subject #6</x:String>
+                ItemTapped="OnSubjectTapped">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:Subject}">
+                        <x:Subject></x:Subject>
                     </x:Array>
                 </d:ListView.ItemsSource>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label Text="{Binding Text}" 
-                                    d:Text="{Binding .}"
-                                    LineBreakMode="NoWrap" 
+                                <Label              
+                                    Text="{Binding Name}"
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16" />
-                                <Label Text="{Binding Description}"
-                                    d:Text="Number of Cards"
-                                    LineBreakMode="NoWrap"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
+                                    FontSize="16"
+                                    x:Name="subjectName"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>-->
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
 

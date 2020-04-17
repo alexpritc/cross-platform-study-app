@@ -20,32 +20,8 @@ namespace StudyApp
             buttonCreate.Clicked += buttonCreateClicked;
 
             List<Subject> subjects = ModifyData.subjects;
-            List<string> subjectNames = new List<string>();
 
-            foreach (Subject subject in subjects)
-            {
-                subjectNames.Add(subject.Id + ", " + subject.Name);
-            }
-
-            listViewSubjects.ItemsSource = subjectNames;
-        }
-
-        private void OnSubjectSelected(object sender, SelectedItemChangedEventArgs ctx)
-        {
-            var subject = ctx.SelectedItem as Subject;
-
-            if (subject == null)
-            {
-                buttonDelete.IsEnabled = false;
-                return;
-            }
-            else
-            {
-                buttonDelete.IsEnabled = true;
-            }
-
-            // Manually deselect item.
-            listViewSubjects.SelectedItem = null;
+            listViewSubjects.ItemsSource = subjects;
         }
 
         private async void buttonCreateClicked(object sender, EventArgs e)
@@ -56,6 +32,13 @@ namespace StudyApp
         private void buttonDeleteClicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void OnSubjectTapped(object sender, ItemTappedEventArgs ctx)
+        {
+            EditSubjectPage.subject = listViewSubjects.SelectedItem as Subject;
+
+            await Navigation.PushAsync(new EditSubjectPage());
         }
     }
 }

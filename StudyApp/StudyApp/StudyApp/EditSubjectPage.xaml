@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="StudyApp.EditSubjectPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Place new controls here -->
+            <Label Text="StudyApp" 
+            Margin="20,20,20,20"
+            HorizontalOptions="Center"
+            FontSize="20"/>
+
+            <Entry Placeholder="New Subject Name"               
+                                    Text="{Binding Name}"
+                   x:Name="subjectName"
+                                    Margin="20,0,20,10"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="18"/>
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="30,0,0,0">
+                <Button Text="Add Card"
+                        x:Name="buttonAdd"
+                        FontSize="13"
+                        Clicked="buttonAddClicked"/>
+
+                <Button Text="Remove Card"      
+                        x:Name="buttonRemove"
+                        FontSize="13"
+                        Clicked="buttonRemoveClicked"/>
+            </StackLayout>
+
+            <Grid>
+                <ListView x:Name="listViewSubjectCards"
+                Margin="20,0,20,0"
+                ItemsSource="{Binding Cards}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement">
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:Card}">
+                            <x:Card></x:Card>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Entry Placeholder="Enter Question Here"               
+                                    Text="{Binding Question}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16"
+                                    x:Name="cardQuestion"/>
+                                    <Entry Placeholder="Enter Answer Here"               
+                                    Text="{Binding Answer}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="13"
+                                    x:Name="cardAnswer"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal"
+                         Padding="25">
+                <Button Text="Cancel"      
+                x:Name="buttonCancel"
+                Clicked="buttonCancelClicked"/>
+
+                <Button Text="Save Subject"
+                x:Name="buttonSave"
+                Clicked="buttonSaveClicked"/>
+
+                <Button Text="Delete Subject"
+                x:Name="buttonDelete"
+                Clicked="buttonDeleteClicked"/>
+               
+            </StackLayout>
+
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
