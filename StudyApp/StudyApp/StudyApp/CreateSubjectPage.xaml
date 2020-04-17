@@ -46,7 +46,7 @@
             <Grid>
                 <ListView x:Name="listViewNewSubjectCards"
                 Margin="20,0,20,0"
-                ItemsSource="{Binding Subjects}"
+                ItemsSource="{Binding Cards}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
@@ -54,8 +54,8 @@
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement">
                     <d:ListView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String></x:String>
+                        <x:Array Type="{x:Type x:Card}">
+                            <x:Card></x:Card>
                         </x:Array>
                     </d:ListView.ItemsSource>
                     <ListView.ItemTemplate>
@@ -63,12 +63,15 @@
                             <ViewCell>
                                 <StackLayout Padding="10">
                                     <Entry Placeholder="Enter Question Here"               
-                                    d:Text="{Binding .}"
+                                    Text="{Binding Question}"
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16" />
+                                    FontSize="16"
+                                    x:Name="cardQuestion"/>
                                     <Entry Placeholder="Enter Answer Here"               
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
+                                    Text="{Binding Answer}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="13"
+                                    x:Name="cardAnswer"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

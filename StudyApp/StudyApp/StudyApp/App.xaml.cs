@@ -8,6 +8,8 @@ namespace StudyApp
     {
         public static ModifyData dataManager = new ModifyData();
 
+        public static IData<Subject> DataStore => DependencyService.Get<IData<Subject>>();
+
         public App()
         {
             InitializeComponent();

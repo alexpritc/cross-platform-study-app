@@ -13,7 +13,8 @@ namespace StudyApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateSubjectPage : ContentPage
     {
-        ObservableCollection<Card> cards = new ObservableCollection<Card>();
+        ObservableCollection<Card> displayCards = new ObservableCollection<Card>();
+        public ObservableCollection<Card> Cards { get { return displayCards; } }
 
         public CreateSubjectPage()
         {
@@ -21,13 +22,46 @@ namespace StudyApp
 
             NavigationPage.SetBackButtonTitle(this, "Cancel");
 
-            listViewNewSubjectCards.ItemsSource = cards;
+
+            listViewNewSubjectCards.ItemsSource = Cards;
         }
 
         private async void buttonSaveClicked(object sender, EventArgs e)
         {
-            Subject newSubject = new Subject { Id = "0000", Name = newSubjectName.Text };
-            await Navigation.PushAsync(new MainPage());
+            Subject newSubject;
+
+            if (listViewNewSubjectCards.ItemsSource != null && newSubjectName.Text != null)
+            {
+                ObservableCollection<Card> temp = new ObservableCollection<Card>();
+
+                foreach (Card card in listViewNewSubjectCards.ItemsSource)
+                {
+                    temp.Add(card);
+                }
+
+                Card[] saveCards = new Card[temp.Count];
+
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    saveCards[i] = temp[i];
+                }
+
+                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Cards = saveCards };
+
+                await App.dataManager.AddSubjectAsync(newSubject);
+                await Navigation.PushAsync(new MainPage());
+            }
+            else if (listViewNewSubjectCards.ItemsSource == null && newSubjectName.Text != null)
+            {
+                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text };
+
+                await App.dataManager.AddSubjectAsync(newSubject);
+                await Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                await DisplayAlert("Warning", "Please name this subject", "OK");
+            }
         }
 
         private async void buttonCancelClicked(object sender, EventArgs e)
@@ -37,12 +71,19 @@ namespace StudyApp
 
         private void buttonAddClicked(object sender, EventArgs e)
         {
-            cards.Add(new Card() { Question = "", Answer = "" });
+            displayCards.Add(new Card() { Question = "how are you?", Answer = "good, thanks!" });
         }
 
         private void buttonRemoveClicked(object sender, EventArgs e)
         {
-            cards.RemoveAt(cards.Count - 1);
+            if (displayCards.Count == 0)
+            {
+                displayCards.Clear();
+            }
+            else if (displayCards.Count > 0)
+            {
+                displayCards.RemoveAt(displayCards.Count - 1);
+            }
         }
     }
 }
