@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StudyApp
 {
-    class Subject
+    public class Subject
     {
         public string Id { get; set; }
         public string Name { get; set; }

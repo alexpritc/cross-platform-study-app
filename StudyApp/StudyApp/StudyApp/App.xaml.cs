@@ -6,11 +6,13 @@ namespace StudyApp
 {
     public partial class App : Application
     {
+        public static ModifyData dataManager = new ModifyData();
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

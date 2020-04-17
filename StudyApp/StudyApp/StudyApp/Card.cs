@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StudyApp
 {
-    class Card
+    public class Card
     {
         public string Question { get; set; }
         public string Answer { get; set; }

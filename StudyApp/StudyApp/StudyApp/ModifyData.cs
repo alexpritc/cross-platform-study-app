@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 
 namespace StudyApp
 {
-    class ModifyData
+    public class ModifyData : IData<Subject>
     {
-        readonly List<Subject> subjects;
+        public static List<Subject> subjects = new List<Subject>();
 
         public ModifyData()
         {
-            subjects = new List<Subject>()
-            {
-                new Subject { Id = Guid.NewGuid().ToString(), Name = "Comp Sci" },
-            };
+            AddSubjectAsync(new Subject() { Id = "0001", Name = "Computer Science" });
+            AddSubjectAsync(new Subject() { Id = "0002", Name = "Psychology" });
+            AddSubjectAsync(new Subject() { Id = "0003", Name = "English Language" });
         }
 
         public async Task<bool> AddSubjectAsync(Subject newSubject)

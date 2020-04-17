@@ -17,12 +17,45 @@ namespace StudyApp
         {
             InitializeComponent();
 
-            List<Subject> subjects = new List<Subject>();
-            subjects.Add(new Subject() { Name = "Computer Science"  });
-            subjects.Add(new Subject() { Name = "English" });
-            subjects.Add(new Subject() { Name = "Psychology" });
+            buttonCreate.Clicked += buttonCreateClicked;
 
-            listViewSubjects.ItemsSource = subjects;
+            List<Subject> subjects = ModifyData.subjects;
+            List<string> subjectNames = new List<string>();
+
+            foreach (Subject subject in subjects)
+            {
+                subjectNames.Add(subject.Id + ", " + subject.Name);
+            }
+
+            listViewSubjects.ItemsSource = subjectNames;
+        }
+
+        private void OnSubjectSelected(object sender, SelectedItemChangedEventArgs ctx)
+        {
+            var subject = ctx.SelectedItem as Subject;
+
+            if (subject == null)
+            {
+                buttonDelete.IsEnabled = false;
+                return;
+            }
+            else
+            {
+                buttonDelete.IsEnabled = true;
+            }
+
+            // Manually deselect item.
+            listViewSubjects.SelectedItem = null;
+        }
+
+        private async void buttonCreateClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateSubjectPage());
+        }
+
+        private void buttonDeleteClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,22 +12,22 @@
             Margin="20,20,20,20"
             HorizontalOptions="Center"
             FontSize="20"/>
-        
+
         <Grid>
             <Label Text="Subjects:"
-                Margin="20,0,0,50"
+                Margin="20,0,0,10"
                 FontSize="18"/>
             <ListView x:Name="listViewSubjects"
                 Margin="20,20,20,20"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding Subjects}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"
-                ItemSelected="OnItemSelected">
-                <d:ListView.ItemsSource>
+                ItemSelected="OnSubjectSelected">
+                <!--<d:ListView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Subject #1</x:String>
                         <x:String>Subject #2</x:String>
@@ -46,7 +46,7 @@
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                <Label Text="{Binding Description}" 
+                                <Label Text="{Binding Description}"
                                     d:Text="Number of Cards"
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
@@ -54,23 +54,21 @@
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
+                </ListView.ItemTemplate>-->
             </ListView>
         </Grid>
 
-        <Label Text="----------Edit Subjects----------" 
-            Margin="0,0,0,20"
-            HorizontalOptions="Center"
-            FontSize="18"/>
+        <StackLayout Orientation="Horizontal"
+                         Padding="25">
+            <Button Text="Create Subject"
+                x:Name="buttonCreate"
+                Clicked="buttonCreateClicked"/>
 
-        <Button Text="Create" 
-            Margin="50,0,50,0"
-            x:Name="buttonCreate"
-            Clicked="buttonCreateClicked"/>
-        <Button Text="Delete"      
-            Margin="50,0,50,25"
-            x:Name="buttonDelete"
-            Clicked="buttonDeleteClicked"/>
+            <Button Text="Delete Subject"      
+                x:Name="buttonDelete"
+                Clicked="buttonDeleteClicked"
+                IsEnabled="False"/>
+        </StackLayout>
 
     </StackLayout>
 
