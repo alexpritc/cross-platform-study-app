@@ -39,8 +39,18 @@ namespace StudyApp
         private async void buttonTestClicked(object sender, EventArgs e)
         {
             string action = await DisplayActionSheet("Which subject would you like to test yourself on?", "Cancel", null, "Computer Science", "Psychology", "Facebook");
-            TestPage.subject = App.dataManager.GetSubjectFromNameAsync(action).Result;
-            await Navigation.PushAsync(new TestPage());
+
+            Subject temp = App.dataManager.GetSubjectFromNameAsync(action).Result;
+
+            if (temp.Cards == null)
+            {
+                await DisplayAlert("Warning", "This subject has no cards, you can add cards by editing the subject", "OK");
+            }
+            else
+            {
+                TestPage.subject = temp;
+                await Navigation.PushAsync(new TestPage());
+            }
         }
     }
 }

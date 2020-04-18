@@ -14,11 +14,6 @@
             FontSize="20"/>
 
             <StackLayout Orientation="Horizontal">
-               
-                <Label Text="Testing: "
-                Margin="20,0,0,0"
-                FontSize="18"/>
-
                 <Label Text="{Binding Name}"
                 Margin="0,0,0,10"
                 FontSize="18"
@@ -26,6 +21,20 @@
                 Style="{DynamicResource ListItemTextStyle}"/>
             </StackLayout>
 
+        <Frame
+               x:Name="cardUI"
+               Margin="25,0,25,0"
+               MinimumHeightRequest="400"
+                HeightRequest="5000">
+                <Label              
+                 Text="{Binding Card}"
+                    d:Text="This is an example question or is it?"
+                 Style="{DynamicResource ListItemTextStyle}" 
+                 FontSize="30"
+                 HorizontalTextAlignment="Center"
+                 VerticalTextAlignment="Center"
+                 x:Name="testCard"/>
+            </Frame>
 
             <StackLayout Orientation="Vertical"
                          Margin="25,0,25,0">
@@ -60,13 +69,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="10">
-                                    <Entry              
-                                    Text="{Binding Question}"
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="30"
-                                    x:Name="cardQuestion"/>
-                                </StackLayout>
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -74,7 +77,7 @@
             </Grid>
 
             <StackLayout Orientation="Horizontal"
-                         Margin="25,50,25,25">
+                         Margin="25,0,25,25">
                 <Button Text="Cancel"      
                 x:Name="buttonCancel"
                         Padding="0,0,0,0"

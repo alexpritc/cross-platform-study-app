@@ -16,8 +16,8 @@ namespace StudyApp
         public static Subject subject;
         public static int counter = 0;
 
-        ObservableCollection<Card> displayCard = new ObservableCollection<Card>();
-        public ObservableCollection<Card> Cards { get { return displayCard; } }
+        ObservableCollection<Card> displayCards = new ObservableCollection<Card>();
+        public ObservableCollection<Card> Cards { get { return displayCards; } }
         public TestPage()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace StudyApp
 
             if (subject.Cards != null)
             {
-                displayCard.Add(subject.Cards[counter]);
+                displayCards.Add(subject.Cards[counter]);
             }
 
             listViewSubjectCards.ItemsSource = Cards;
