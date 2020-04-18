@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudyApp.CreateSubjectPage">
+             x:Class="StudyApp.TestPage">
     <ContentPage.Content>
         <StackLayout>
             <!-- Place new controls here -->
@@ -13,42 +13,36 @@
             HorizontalOptions="Center"
             FontSize="20"/>
 
-            <Label Text="Create new subject:"
-                Margin="20,0,0,10"
+            <StackLayout Orientation="Horizontal">
+               
+                <Label Text="Testing: "
+                Margin="20,0,0,0"
                 FontSize="18"/>
 
-            <Label Text="Subject:"
-                Margin="20,0,0,0"
-                FontSize="16"/>
-            
-            <Entry Placeholder="Enter Subject Name Here"
-                   x:Name="newSubjectName"
-                   Text="{Binding Name}"
-                   Style="{DynamicResource ListItemTextStyle}"
-                       Margin="30,0,30,5"
-                        FontSize="16"/>
+                <Label Text="{Binding Name}"
+                Margin="0,0,0,10"
+                FontSize="18"
+                x:Name="subjectName"
+                Style="{DynamicResource ListItemTextStyle}"/>
+            </StackLayout>
 
-            <Label Text="Cards:"
-                Margin="20,0,0,0"
-                FontSize="16"/>
-            
-            <StackLayout Orientation="Horizontal"
-                         Margin="30,0,0,0">
-                <Button Text="Add Card"
-                        x:Name="buttonAdd"
-                        FontSize="13"
-                        Padding="0,0,0,0"
-                        Clicked="buttonAddClicked"/>
 
-                <Button Text="Remove Card"      
-                        x:Name="buttonRemove"
-                        FontSize="13"
+            <StackLayout Orientation="Vertical"
+                         Margin="25,0,25,0">
+                <Button Text="Previous Card"
+                x:Name="buttonPrevious"
                         Padding="0,0,0,0"
-                        Clicked="buttonRemoveClicked"/>
+                Clicked="buttonPreviousClicked"/>
+
+                <Button Text="Next Card"
+                x:Name="buttonNext"
+                        Padding="0,0,0,0"
+                 Clicked="buttonNextClicked"/>
+
             </StackLayout>
 
             <Grid>
-                <ListView x:Name="listViewNewSubjectCards"
+                <ListView x:Name="listViewSubjectCards"
                 Margin="20,0,20,0"
                 ItemsSource="{Binding Cards}"
                 VerticalOptions="FillAndExpand"
@@ -56,7 +50,8 @@
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement">
+                CachingStrategy="RecycleElement"
+                ItemTapped="cardTapped">
                     <d:ListView.ItemsSource>
                         <x:Array Type="{x:Type x:Card}">
                             <x:Card></x:Card>
@@ -66,16 +61,11 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Padding="10">
-                                    <Entry Placeholder="Enter Question Here"               
+                                    <Entry              
                                     Text="{Binding Question}"
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16"
+                                    FontSize="30"
                                     x:Name="cardQuestion"/>
-                                    <Entry Placeholder="Enter Answer Here"               
-                                    Text="{Binding Answer}"
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="13"
-                                    x:Name="cardAnswer"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -84,12 +74,7 @@
             </Grid>
 
             <StackLayout Orientation="Horizontal"
-                         Padding="25">
-                <Button Text="Save Subject"
-                x:Name="buttonSave"
-                        Padding="0,0,0,0"
-                Clicked="buttonSaveClicked"/>
-
+                         Margin="25,50,25,25">
                 <Button Text="Cancel"      
                 x:Name="buttonCancel"
                         Padding="0,0,0,0"

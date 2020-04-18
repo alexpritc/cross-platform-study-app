@@ -29,16 +29,18 @@ namespace StudyApp
             await Navigation.PushAsync(new CreateSubjectPage());
         }
 
-        private void buttonDeleteClicked(object sender, EventArgs e)
-        {
-
-        }
-
         private async void OnSubjectTapped(object sender, ItemTappedEventArgs ctx)
         {
             EditSubjectPage.subject = listViewSubjects.SelectedItem as Subject;
 
             await Navigation.PushAsync(new EditSubjectPage());
+        }
+
+        private async void buttonTestClicked(object sender, EventArgs e)
+        {
+            string action = await DisplayActionSheet("Which subject would you like to test yourself on?", "Cancel", null, "Computer Science", "Psychology", "Facebook");
+            TestPage.subject = App.dataManager.GetSubjectFromNameAsync(action).Result;
+            await Navigation.PushAsync(new TestPage());
         }
     }
 }

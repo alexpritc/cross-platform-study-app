@@ -13,10 +13,14 @@
             HorizontalOptions="Center"
             FontSize="20"/>
 
+            <Label Text="Edit subject:"
+                Margin="20,0,0,10"
+                FontSize="18"/>
+
             <Entry Placeholder="New Subject Name"               
                                     Text="{Binding Name}"
                    x:Name="subjectName"
-                                    Margin="20,0,20,10"
+                                    Margin="25,0,25,10"
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="18"/>
 
@@ -25,11 +29,13 @@
                 <Button Text="Add Card"
                         x:Name="buttonAdd"
                         FontSize="13"
+                        Padding="0,0,0,0"
                         Clicked="buttonAddClicked"/>
 
                 <Button Text="Remove Card"      
                         x:Name="buttonRemove"
                         FontSize="13"
+                        Padding="0,0,0,0"
                         Clicked="buttonRemoveClicked"/>
             </StackLayout>
 
@@ -70,18 +76,21 @@
             </Grid>
 
             <StackLayout Orientation="Horizontal"
-                         Padding="25">
+                         Padding = "25">
                 <Button Text="Cancel"      
                 x:Name="buttonCancel"
+                        Padding="0,0,0,0"
                 Clicked="buttonCancelClicked"/>
 
                 <Button Text="Save Subject"
                 x:Name="buttonSave"
+                        Padding="0,0,0,0"
                 Clicked="buttonSaveClicked"/>
 
                 <Button Text="Delete Subject"
                 x:Name="buttonDelete"
-                Clicked="buttonDeleteClicked"/>
+                        Padding="0,0,0,0"
+                 Clicked="buttonDeleteClicked"/>
                
             </StackLayout>
 

@@ -10,6 +10,7 @@ namespace StudyApp
         Task<bool> UpdateSubjectAsync(T subject);
         Task<bool> DeleteSubjectAsync(string id);
         Task<T> GetSubjectAsync(string id);
+        Task<T> GetSubjectFromNameAsync(string name);
         Task<IEnumerable<T>> GetSubjectsAsync(bool forceRefresh = false);
     }
 }

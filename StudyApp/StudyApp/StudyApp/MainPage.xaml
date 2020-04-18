@@ -13,12 +13,21 @@
             HorizontalOptions="Center"
             FontSize="20"/>
 
-        <Grid>
-            <Label Text="Subjects:"
-                Margin="20,0,0,20"
+        <Label Text="Subjects:"
+                Margin="20,0,0,0"
                 FontSize="18"/>
+
+        <StackLayout Orientation="Horizontal"
+                         Margin="25,0,0,0">
+            <Button Text="Create Subject"
+                x:Name="buttonCreate"
+                    Padding="0,0,0,0"
+                Clicked="buttonCreateClicked"/>
+        </StackLayout>
+
+        <Grid>
             <ListView x:Name="listViewSubjects"
-                Margin="20,20,20,20"
+                Margin="20,0,20,0"
                 ItemsSource="{Binding Subject}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -48,16 +57,12 @@
             </ListView>
         </Grid>
 
-        <StackLayout Orientation="Horizontal"
+        <StackLayout Orientation="Vertical"
                          Padding="25">
-            <Button Text="Create Subject"
-                x:Name="buttonCreate"
-                Clicked="buttonCreateClicked"/>
-
-            <Button Text="Delete Subject"      
-                x:Name="buttonDelete"
-                Clicked="buttonDeleteClicked"
-                IsEnabled="False"/>
+            <Button Text="Test Yourself!"      
+                x:Name="buttonTest"
+                    Padding="0,0,0,0"
+                Clicked="buttonTestClicked"/>
         </StackLayout>
 
     </StackLayout>

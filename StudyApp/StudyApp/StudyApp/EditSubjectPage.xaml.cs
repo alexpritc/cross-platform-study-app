@@ -57,52 +57,113 @@ namespace StudyApp
         {
             Subject newSubject;
 
-            if (listViewSubjectCards.ItemsSource != null && subjectName.Text != null)
-            {
-                ObservableCollection<Card> temp = new ObservableCollection<Card>();
+            ObservableCollection<Card> temp = new ObservableCollection<Card>();
 
-                foreach (Card card in listViewSubjectCards.ItemsSource)
-                {
-                    temp.Add(card);
-                }
-
-                Card[] saveCards = new Card[temp.Count];
-
-                for (int i = 0; i < temp.Count; i++)
-                {
-                    saveCards[i] = temp[i];
-                }
-
-                newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
-
-                if (newSubject.Name != subject.Name || newSubject.Cards != subject.Cards)
-                {
-                    await App.dataManager.UpdateSubjectAsync(newSubject);
-                }
-                else
-                {
-                    await DisplayAlert("Warning", "No changes were made to " + subjectName.Text, "OK");
-                }
-                await Navigation.PushAsync(new MainPage());
-            }
-            else if (listViewSubjectCards.ItemsSource == null && subjectName.Text != null)
-            {
-                newSubject = new Subject { Id = subject.Id, Name = subjectName.Text };
-
-                if (newSubject.Name != subject.Name || newSubject.Cards != subject.Cards)
-                {
-                    await App.dataManager.UpdateSubjectAsync(newSubject);
-                }
-                else
-                {
-                    await DisplayAlert("Warning", "No changes were made to " + subjectName.Text, "OK");
-                }
-                await Navigation.PushAsync(new MainPage());
-            }
-            else
+            if (subjectName.Text == "")
             {
                 await DisplayAlert("Warning", "Please name this subject", "OK");
             }
+            else
+            {
+                if (listViewSubjectCards.ItemsSource != null)
+                {
+                    foreach (Card card in listViewSubjectCards.ItemsSource)
+                    {
+                        temp.Add(card);
+                    }
+
+                    int counter = 0;
+                    bool isNull = true;
+
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        if (temp[i] != null && (temp[i].Question != "" && temp[i].Answer !=""))
+                        {
+                            counter++;
+                            isNull = false;
+                        }
+                    }
+
+                    Card[] saveCards = new Card[counter];
+                    int j = 0;
+
+                    if (isNull)
+                    {
+                        saveCards = null;
+                    }
+                    else
+                    {
+                        foreach (Card item in temp)
+                        {
+                            if (item != null && (item.Question != "" && item.Answer != ""))
+                            {
+                                saveCards[j] = item;
+                                j++;
+                            }
+                        }
+                    }
+
+                    if (subject.Cards != null)
+                    {
+                        if (!AreCardsTheSame(subject.Cards, saveCards))
+                        {
+                            newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
+
+                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                        }
+                        else
+                        {
+                            if (subjectName.Text == subject.Name)
+                            {
+                                await DisplayAlert("Warning", "No changes were made to " + subjectName.Text, "OK");
+                            }
+                            else
+                            {
+                                newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
+
+                                await App.dataManager.UpdateSubjectAsync(newSubject);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (subjectName.Text == subject.Name && subject.Cards == saveCards)
+                        {
+                            await DisplayAlert("Warning", "No changes were made to " + subjectName.Text, "OK");
+                        }
+                        else
+                        {
+                            newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
+
+                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                        }
+                    }
+                }
+                else
+                {
+                    if (subject.Cards != null)
+                    {
+                        newSubject = new Subject { Id = subject.Id, Name = subjectName.Text };
+
+                        await App.dataManager.UpdateSubjectAsync(newSubject);
+                    }
+                    else
+                    {
+                        if (subjectName.Text == subject.Name)
+                        {
+                            await DisplayAlert("Warning", "No changes were made to " + subjectName.Text, "OK");
+                        }
+                        else
+                        {
+                            newSubject = new Subject { Id = subject.Id, Name = subjectName.Text };
+
+                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                        }
+                    }
+                }
+
+                await Navigation.PushAsync(new MainPage());
+            }  
         }
 
         private async void buttonCancelClicked(object sender, EventArgs e)
@@ -119,6 +180,33 @@ namespace StudyApp
                 await App.dataManager.DeleteSubjectAsync(subject.Id);
                 await Navigation.PushAsync(new MainPage());
             }
+        }
+
+        private bool AreCardsTheSame(Card[] original, Card[] newCards)
+        {
+            bool areTheSame = true;
+
+            if (original.Length != newCards.Length)
+            {
+                areTheSame = false;
+            }
+            else
+            {
+                int counter = 0;
+
+                foreach (Card item in original)
+                {
+                    if (item.Question != newCards[counter].Question 
+                        || item.Answer !=  newCards[counter].Answer)
+                    {
+                        areTheSame = false;
+                    }
+
+                    counter++;
+                }
+            }
+
+            return areTheSame;
         }
     }
 }
