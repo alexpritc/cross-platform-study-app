@@ -14,70 +14,21 @@
             FontSize="20"/>
 
             <StackLayout Orientation="Horizontal">
+                <Label Text="Testing: "
+                Margin="25,0,0,5"
+                FontSize="18"
+                Style="{DynamicResource ListItemTextStyle}"/>
                 <Label Text="{Binding Name}"
                 Margin="0,0,0,10"
                 FontSize="18"
                 x:Name="subjectName"
+                       d:Text="Computer Science"
                 Style="{DynamicResource ListItemTextStyle}"/>
             </StackLayout>
 
-        <Frame
-               x:Name="cardUI"
-               Margin="25,0,25,0"
-               MinimumHeightRequest="400"
-                HeightRequest="5000">
-                <Label              
-                 Text="{Binding Card}"
-                    d:Text="This is an example question or is it?"
-                 Style="{DynamicResource ListItemTextStyle}" 
-                 FontSize="30"
-                 HorizontalTextAlignment="Center"
-                 VerticalTextAlignment="Center"
-                 x:Name="testCard"/>
-            </Frame>
-
-            <StackLayout Orientation="Vertical"
-                         Margin="25,0,25,0">
-                <Button Text="Previous Card"
-                x:Name="buttonPrevious"
-                        Padding="0,0,0,0"
-                Clicked="buttonPreviousClicked"/>
-
-                <Button Text="Next Card"
-                x:Name="buttonNext"
-                        Padding="0,0,0,0"
-                 Clicked="buttonNextClicked"/>
-
-            </StackLayout>
-
-            <Grid>
-                <ListView x:Name="listViewSubjectCards"
-                Margin="20,0,20,0"
-                ItemsSource="{Binding Cards}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemTapped="cardTapped">
-                    <d:ListView.ItemsSource>
-                        <x:Array Type="{x:Type x:Card}">
-                            <x:Card></x:Card>
-                        </x:Array>
-                    </d:ListView.ItemsSource>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
 
             <StackLayout Orientation="Horizontal"
-                         Margin="25,0,25,25">
+                         Margin="25,1,25,25">
                 <Button Text="Cancel"      
                 x:Name="buttonCancel"
                         Padding="0,0,0,0"

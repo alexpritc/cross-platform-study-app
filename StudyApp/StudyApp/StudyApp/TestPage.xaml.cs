@@ -31,7 +31,7 @@ namespace StudyApp
                 displayCards.Add(subject.Cards[counter]);
             }
 
-            listViewSubjectCards.ItemsSource = Cards;
+            //listViewSubjectCards.ItemsSource = Cards;
         }
 
         private async void buttonCancelClicked(object sender, EventArgs e)
@@ -42,21 +42,6 @@ namespace StudyApp
             {
                 await Navigation.PushAsync(new MainPage());
             }
-        }
-
-        private void buttonNextClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonPreviousClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cardTapped(object sender, ItemTappedEventArgs e)
-        {
-
         }
     }
 }
