@@ -51,7 +51,7 @@
             <Grid>
                 <ListView x:Name="listViewInfo"
                 Margin="20,0,20,0"
-                ItemsSource="{Binding Info}"
+                ItemsSource="{Binding DisplayInfo}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
@@ -60,7 +60,7 @@
                 CachingStrategy="RecycleElement">
                     <d:ListView.ItemsSource>
                         <x:Array Type="{x:Type x:Info}">
-                            <x:String></x:String>
+                            <x:Info></x:Info>
                         </x:Array>
                     </d:ListView.ItemsSource>
                     <ListView.ItemTemplate>
@@ -68,7 +68,11 @@
                             <ViewCell>
                                 <StackLayout Padding="10">
                                     <Label              
-                                    Text="{Binding string}"
+                                    Text="{Binding TimesTried}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16"/>
+                                    <Label              
+                                    Text="{Binding Percentages}"
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16"/>
                                 </StackLayout>

@@ -22,8 +22,11 @@ namespace StudyApp
         int correctAnswers = 0;
         int incorrectAnswers = 0;
 
-        ObservableCollection<string> displayInfo = new ObservableCollection<string>();
-        public ObservableCollection<string> Info { get { return displayInfo; } }
+        float percentage;
+
+        ObservableCollection<Info> displayInfo = new ObservableCollection<Info>();
+        public ObservableCollection<Info> DisplayInfo { get { return displayInfo; } }
+
         public TestPage()
         {
             InitializeComponent();
@@ -41,9 +44,14 @@ namespace StudyApp
                 buttonNext.Text = "Begin test!";
             }
 
+            if (subject.Cards != null)
+            {
+                
+            }
+
             CalculateInfo();
 
-            listViewInfo.ItemsSource = Info;
+            listViewInfo.ItemsSource = DisplayInfo;
         }
 
         private async void buttonCancelClicked(object sender, EventArgs e)
@@ -84,10 +92,9 @@ namespace StudyApp
                 currentQuestion++;
                 currentQuestionNumber.Text = displayQuestionNum.ToString();
 
-                CalculateInfo();
-
                 if (currentQuestion >= testLength)
                 {
+                    CalculateInfo();
                     bool response;
 
                     if (correctAnswers >= testLength)
@@ -106,6 +113,9 @@ namespace StudyApp
                             "Would you like to try again?", "Yes", "No");
                     }
 
+                    subject.Information.TimesTested++;
+                    subject.Information.Percentages.Add(percentage);
+
                     if (!response)
                     {
                         await Navigation.PushAsync(new MainPage());
@@ -120,16 +130,10 @@ namespace StudyApp
 
         void CalculateInfo()
         {
-            displayInfo.Clear();
-
-            float percentage = correctAnswers / testLength * 100;
+            percentage = correctAnswers / testLength * 100;
             double displayPercentage = Math.Round(percentage, 2);
-            int questionsLeft = testLength - currentQuestion;
 
-            displayInfo.Add("Percentage: " + displayPercentage.ToString());
-            displayInfo.Add("Correct Answers: " + correctAnswers.ToString());
-            displayInfo.Add("Incorrect Answers: " + incorrectAnswers.ToString());
-            displayInfo.Add("Number of questions left: " + questionsLeft.ToString());
+            subject.Information.Percentages.Add(displayPercentage);
         }
     }
 }

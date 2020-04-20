@@ -28,6 +28,7 @@ namespace StudyApp
 
         private async void buttonSaveClicked(object sender, EventArgs e)
         {
+            Info newInfo = new Info { TimesTested = 0 };
             Subject newSubject;
 
             if (listViewNewSubjectCards.ItemsSource != null && newSubjectName.Text != null)
@@ -46,14 +47,14 @@ namespace StudyApp
                     saveCards[i] = temp[i];
                 }
 
-                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Cards = saveCards };
+                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Cards = saveCards, Information = newInfo };
 
                 await App.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());
             }
             else if (listViewNewSubjectCards.ItemsSource == null && newSubjectName.Text != null)
             {
-                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text };
+                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Information = newInfo };
 
                 await App.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());

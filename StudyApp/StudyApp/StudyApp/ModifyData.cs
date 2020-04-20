@@ -14,9 +14,12 @@ namespace StudyApp
             Card[] cards = new Card[2];
             cards[0] = new Card { Question = "What is comp sci?", Answer = "Fun" };
             cards[1] = new Card { Question = "What are computers?", Answer = "Cool" };
-            AddSubjectAsync(new Subject() { Id = "0001", Name = "Computer Science", Cards = cards });
-            AddSubjectAsync(new Subject() { Id = "0002", Name = "Psychology" });
-            AddSubjectAsync(new Subject() { Id = "0003", Name = "English Language" });
+
+            Info newInfo = new Info { TimesTested = 0 };
+
+            AddSubjectAsync(new Subject() { Id = "0001", Name = "Computer Science", Cards = cards, Information = newInfo });
+            AddSubjectAsync(new Subject() { Id = "0002", Name = "Psychology", Information = newInfo });
+            AddSubjectAsync(new Subject() { Id = "0003", Name = "English Language", Information = newInfo });
         }
 
         public async Task<bool> AddSubjectAsync(Subject newSubject)
