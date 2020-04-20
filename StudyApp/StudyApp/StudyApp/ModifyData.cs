@@ -11,8 +11,9 @@ namespace StudyApp
 
         public ModifyData()
         {
-            Card[] cards = new Card[1];
+            Card[] cards = new Card[2];
             cards[0] = new Card { Question = "What is comp sci?", Answer = "Fun" };
+            cards[1] = new Card { Question = "What are computers?", Answer = "Cool" };
             AddSubjectAsync(new Subject() { Id = "0001", Name = "Computer Science", Cards = cards });
             AddSubjectAsync(new Subject() { Id = "0002", Name = "Psychology" });
             AddSubjectAsync(new Subject() { Id = "0003", Name = "English Language" });

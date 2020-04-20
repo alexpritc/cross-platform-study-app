@@ -17,14 +17,6 @@
                 Margin="20,0,0,0"
                 FontSize="18"/>
 
-        <StackLayout Orientation="Horizontal"
-                         Margin="25,0,0,0">
-            <Button Text="Create Subject"
-                x:Name="buttonCreate"
-                    Padding="0,0,0,0"
-                Clicked="buttonCreateClicked"/>
-        </StackLayout>
-
         <Grid>
             <ListView x:Name="listViewSubjects"
                 Margin="20,0,20,0"
@@ -34,8 +26,7 @@
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemTapped="OnSubjectTapped">
+                CachingStrategy="RecycleElement">
                 <d:ListView.ItemsSource>
                     <x:Array Type="{x:Type x:Subject}">
                         <x:Subject></x:Subject>
@@ -56,6 +47,19 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
+
+        <StackLayout Orientation="Horizontal"
+                         Margin="25,0,25,0">
+            <Button Text="Create Subject"
+                x:Name="buttonCreate"
+                    Padding="0,0,0,0"
+                Clicked="buttonCreateClicked"/>
+
+            <Button Text="Edit Subject"
+                x:Name="buttonEdit"
+                    Padding="0,0,0,0"
+                Clicked="buttonEditClicked"/>
+        </StackLayout>
 
         <StackLayout Orientation="Vertical"
                          Padding="25">

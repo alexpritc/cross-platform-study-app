@@ -22,11 +22,70 @@
                 Margin="0,0,0,10"
                 FontSize="18"
                 x:Name="subjectName"
-                       d:Text="Computer Science"
                 Style="{DynamicResource ListItemTextStyle}"/>
             </StackLayout>
 
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Question: "
+                Margin="25,0,0,5"
+                FontSize="16"
+                Style="{DynamicResource ListItemTextStyle}"/>
+                <Label Text=""
+                Margin="0,0,0,10"
+                FontSize="16"
+                x:Name="currentQuestionNumber"
+                       d:Text="#"
+                Style="{DynamicResource ListItemTextStyle}"/>
+                <Label Text="/"
+                Margin="0,0,0,0"
+                FontSize="16"
+                Style="{DynamicResource ListItemTextStyle}"/>
+                <Label Text=""
+                Margin="0,0,0,0"
+                FontSize="16"
+                x:Name="totalNumberOfQuestions"
+                       d:Text="#"
+                Style="{DynamicResource ListItemTextStyle}"/>
+            </StackLayout>
 
+            <Grid>
+                <ListView x:Name="listViewInfo"
+                Margin="20,0,20,0"
+                ItemsSource="{Binding Info}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement">
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:Info}">
+                            <x:String></x:String>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label              
+                                    Text="{Binding string}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <StackLayout Orientation="Vertical"
+                         Margin="25,25,25,25">
+                <Button Text="Next Question"      
+                x:Name="buttonNext"
+                Padding="0,0,0,0"
+                Clicked="buttonNextClicked"/>
+            </StackLayout>
+            
             <StackLayout Orientation="Horizontal"
                          Margin="25,1,25,25">
                 <Button Text="Cancel"      
