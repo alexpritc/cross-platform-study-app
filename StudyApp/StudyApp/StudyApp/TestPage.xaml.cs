@@ -14,18 +14,11 @@ namespace StudyApp
     public partial class TestPage : ContentPage
     {
         public static Subject subject;
-        public static int counter = 0;
 
         int testLength;
         int currentQuestion = 0;
 
         int correctAnswers = 0;
-        int incorrectAnswers = 0;
-
-        float percentage;
-
-        ObservableCollection<Info> displayInfo = new ObservableCollection<Info>();
-        public ObservableCollection<Info> DisplayInfo { get { return displayInfo; } }
 
         public TestPage()
         {
@@ -43,15 +36,6 @@ namespace StudyApp
 
                 buttonNext.Text = "Begin test!";
             }
-
-            if (subject.Cards != null)
-            {
-                
-            }
-
-            CalculateInfo();
-
-            listViewInfo.ItemsSource = DisplayInfo;
         }
 
         private async void buttonCancelClicked(object sender, EventArgs e)
@@ -84,17 +68,12 @@ namespace StudyApp
                 {
                     correctAnswers++;
                 }
-                else
-                {
-                    incorrectAnswers++;
-                }
 
                 currentQuestion++;
                 currentQuestionNumber.Text = displayQuestionNum.ToString();
 
                 if (currentQuestion >= testLength)
                 {
-                    CalculateInfo();
                     bool response;
 
                     if (correctAnswers >= testLength)
@@ -113,9 +92,6 @@ namespace StudyApp
                             "Would you like to try again?", "Yes", "No");
                     }
 
-                    subject.Information.TimesTested++;
-                    subject.Information.Percentages.Add(percentage);
-
                     if (!response)
                     {
                         await Navigation.PushAsync(new MainPage());
@@ -127,13 +103,6 @@ namespace StudyApp
                 }
             }
         }
-
-        void CalculateInfo()
-        {
-            percentage = correctAnswers / testLength * 100;
-            double displayPercentage = Math.Round(percentage, 2);
-
-            subject.Information.Percentages.Add(displayPercentage);
-        }
+        
     }
 }

@@ -45,30 +45,31 @@ namespace StudyApp
                 }
                 else
                 {
-                    var answer = await DisplayAlert("Warning", "Completed test scores will be permanently stored. Are you sure you want to begin test?", "Yes", "No");
-
-                    if (answer)
-                    {
-                        TestPage.subject = temp;
-                        await Navigation.PushAsync(new TestPage());
-                    }
+                    TestPage.subject = temp;
+                    await Navigation.PushAsync(new TestPage());
                 }
             }     
         }
 
         private async void buttonPractiseClicked(object sender, EventArgs e)
         {
-            string action = await DisplayActionSheet("Which subject would you like to practise?", "Cancel", null, "Computer Science", "Psychology", "Facebook");
-
-            Subject temp = App.dataManager.GetSubjectFromNameAsync(action).Result;
-
-            if (temp.Cards == null)
+            if (listViewSubjects.SelectedItem == null)
             {
-                await DisplayAlert("Warning", "This subject has no cards, you can add cards by editing the subject", "OK");
+                await DisplayAlert("Warning", "Please select a subject to practise", "OK");
             }
             else
             {
+                Subject temp = listViewSubjects.SelectedItem as Subject;
 
+                if (temp.Cards == null)
+                {
+                    await DisplayAlert("Warning", "This subject has no cards, you can add cards by editing the subject", "OK");
+                }
+                else
+                {
+                    PractisePage.subject = temp;
+                    await Navigation.PushAsync(new PractisePage());
+                }
             }
         }
 

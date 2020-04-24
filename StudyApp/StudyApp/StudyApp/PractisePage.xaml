@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="StudyApp.PractisePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Place new controls here -->
+            <Label Text="StudyApp" 
+            Margin="20,20,20,20"
+            HorizontalOptions="Center"
+            FontSize="20"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Practising: "
+                Margin="25,0,0,5"
+                FontSize="18"
+                Style="{DynamicResource ListItemTextStyle}"/>
+                <Label Text="{Binding Name}"
+                Margin="0,0,0,10"
+                FontSize="18"
+                x:Name="subjectName"
+                Style="{DynamicResource ListItemTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="25,1,25,25">
+                <Button Text="Reveal Answer"      
+                x:Name="buttonReveal"
+                        Padding="0,0,0,0"
+                Clicked="buttonRevealClicked"/>
+            </StackLayout>
+
+            <Grid>
+                <Frame x:Name="frameCards"
+                        Margin="20,0,20,0"
+                       BackgroundColor="WhiteSmoke"
+                       MinimumHeightRequest="200"
+                       HasShadow="True">
+                    <Label 
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Text=""
+                    d:Text="This is an example question, or is it?"
+                    Style="{DynamicResource ListItemTextStyle}" 
+                    FontSize="48"
+                    x:Name="cardDetails"/>
+                </Frame>
+            </Grid>
+
+            <StackLayout Orientation="Vertical"
+                         Margin="25,25,25,25">
+                <Button Text="Previous Question"      
+                x:Name="buttonPrevious"
+                Padding="0,0,0,0"
+                Clicked="buttonPreviousClicked"/>
+                
+                <Button Text="Next Question"      
+                x:Name="buttonNext"
+                Padding="0,0,0,0"
+                Clicked="buttonNextClicked"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal"
+                         Margin="25,1,25,25">
+                <Button Text="Cancel"      
+                x:Name="buttonCancel"
+                        Padding="0,0,0,0"
+                Clicked="buttonCancelClicked"/>
+            </StackLayout>
+
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

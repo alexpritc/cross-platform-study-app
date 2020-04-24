@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="PractisePage.xaml.cs">
+      <DependentUpon>PractisePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>

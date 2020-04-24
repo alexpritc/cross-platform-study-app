@@ -60,21 +60,13 @@
                 CachingStrategy="RecycleElement">
                     <d:ListView.ItemsSource>
                         <x:Array Type="{x:Type x:Info}">
-                            <x:Info></x:Info>
                         </x:Array>
                     </d:ListView.ItemsSource>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Padding="10">
-                                    <Label              
-                                    Text="{Binding TimesTried}"
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16"/>
-                                    <Label              
-                                    Text="{Binding Percentages}"
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16"/>
+
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
