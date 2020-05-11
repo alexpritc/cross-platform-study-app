@@ -48,14 +48,14 @@ namespace StudyApp
 
                 newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Cards = saveCards};
 
-                await App.dataManager.AddSubjectAsync(newSubject);
+                await BaseViewModel.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());
             }
             else if (listViewNewSubjectCards.ItemsSource == null && newSubjectName.Text != null)
             {
                 newSubject = new Subject { Id = "0000", Name = newSubjectName.Text};
 
-                await App.dataManager.AddSubjectAsync(newSubject);
+                await BaseViewModel.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());
             }
             else

@@ -13,15 +13,17 @@ namespace StudyApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        MainPageViewModel viewModel;
+
         public MainPage()
         {
             InitializeComponent();
 
+            BindingContext = viewModel = new MainPageViewModel();
+
             buttonCreate.Clicked += buttonCreateClicked;
 
-            List<Subject> subjects = ModifyData.subjects;
-
-            listViewSubjects.ItemsSource = subjects;
+            listViewSubjects.ItemsSource = viewModel.Subjects;
         }
 
         private async void buttonCreateClicked(object sender, EventArgs e)

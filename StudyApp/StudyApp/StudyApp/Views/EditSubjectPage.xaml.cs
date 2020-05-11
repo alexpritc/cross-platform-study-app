@@ -109,7 +109,7 @@ namespace StudyApp
                         {
                             newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
 
-                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                            await BaseViewModel.dataManager.UpdateSubjectAsync(newSubject);
                         }
                         else
                         {
@@ -121,7 +121,7 @@ namespace StudyApp
                             {
                                 newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
 
-                                await App.dataManager.UpdateSubjectAsync(newSubject);
+                                await BaseViewModel.dataManager.UpdateSubjectAsync(newSubject);
                             }
                         }
                     }
@@ -135,7 +135,7 @@ namespace StudyApp
                         {
                             newSubject = new Subject { Id = subject.Id, Name = subjectName.Text, Cards = saveCards };
 
-                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                            await BaseViewModel.dataManager.UpdateSubjectAsync(newSubject);
                         }
                     }
                 }
@@ -145,7 +145,7 @@ namespace StudyApp
                     {
                         newSubject = new Subject { Id = subject.Id, Name = subjectName.Text };
 
-                        await App.dataManager.UpdateSubjectAsync(newSubject);
+                        await BaseViewModel.dataManager.UpdateSubjectAsync(newSubject);
                     }
                     else
                     {
@@ -157,7 +157,7 @@ namespace StudyApp
                         {
                             newSubject = new Subject { Id = subject.Id, Name = subjectName.Text };
 
-                            await App.dataManager.UpdateSubjectAsync(newSubject);
+                            await BaseViewModel.dataManager.UpdateSubjectAsync(newSubject);
                         }
                     }
                 }
@@ -177,7 +177,7 @@ namespace StudyApp
 
             if (answer)
             {
-                await App.dataManager.DeleteSubjectAsync(subject.Id);
+                await BaseViewModel.dataManager.DeleteSubjectAsync(subject.Id);
                 await Navigation.PushAsync(new MainPage());
             }
         }
