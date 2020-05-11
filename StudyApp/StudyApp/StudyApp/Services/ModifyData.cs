@@ -11,18 +11,14 @@ namespace StudyApp
 
         public ModifyData()
         {
-            Card[] cards = new Card[2];
-            cards[0] = new Card { Question = "What is comp sci?", Answer = "Fun" };
-            cards[1] = new Card { Question = "What are computers?", Answer = "Cool" };
-
-            AddSubjectAsync(new Subject() { Id = "0001", Name = "Computer Science", Cards = cards});
-            AddSubjectAsync(new Subject() { Id = "0002", Name = "Psychology" });
-            AddSubjectAsync(new Subject() { Id = "0003", Name = "English Language"});
+            subjects = App.storageManager.LoadSubjectsFromFile();
         }
 
         public async Task<bool> AddSubjectAsync(Subject newSubject)
         {
             subjects.Add(newSubject);
+
+            Save();
 
             return await Task.FromResult(true);
         }
@@ -33,6 +29,8 @@ namespace StudyApp
             subjects.Remove(oldItem);
             subjects.Add(subject);
 
+            Save();
+
             return await Task.FromResult(true);
         }
 
@@ -40,6 +38,8 @@ namespace StudyApp
         {
             var oldItem = subjects.Where((Subject arg) => arg.Id == id).FirstOrDefault();
             subjects.Remove(oldItem);
+
+            Save();
 
             return await Task.FromResult(true);
         }
@@ -57,6 +57,11 @@ namespace StudyApp
         public async Task<IEnumerable<Subject>> GetSubjectsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(subjects);
+        }
+
+        private void Save()
+        {
+            App.storageManager.SaveSubjectsToFile(subjects);
         }
     }
 }
