@@ -47,14 +47,14 @@ namespace StudyApp
                     saveCards[i] = temp[i];
                 }
 
-                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text, Cards = saveCards};
+                newSubject = new Subject { Id = generateRandomID(), Name = newSubjectName.Text, Cards = saveCards};
 
                 await BaseViewModel.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());
             }
             else if (listViewNewSubjectCards.ItemsSource == null && newSubjectName.Text != null)
             {
-                newSubject = new Subject { Id = "0000", Name = newSubjectName.Text};
+                newSubject = new Subject { Id = generateRandomID(), Name = newSubjectName.Text};
 
                 await BaseViewModel.dataManager.AddSubjectAsync(newSubject);
                 await Navigation.PushAsync(new MainPage());
@@ -88,6 +88,28 @@ namespace StudyApp
             {
                 displayCards.RemoveAt(displayCards.Count - 1);
             }
+        }
+
+        // Generates a random id for the subject
+        private string generateRandomID()
+        {
+            int length = 4;
+
+            // Creating a StringBuilder object()
+            StringBuilder str_build = new StringBuilder();
+            Random random = new Random();
+
+            char letter;
+
+            for (int i = 0; i < length; i++)
+            {
+                double flt = random.NextDouble();
+                int shift = Convert.ToInt32(Math.Floor(25 * flt));
+                letter = Convert.ToChar(shift + 65);
+                str_build.Append(letter);
+            }
+
+            return str_build.ToString();
         }
     }
 }

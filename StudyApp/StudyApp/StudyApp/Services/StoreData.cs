@@ -31,12 +31,12 @@ namespace StudyApp
                 XmlNodeList subjectNodeList = xmlDoc.DocumentElement.SelectNodes("/Data/Subject");
 
                 string sID = "", sName = "";
-                ObservableCollection<Card> sCards = new ObservableCollection<Card>();
 
                 List<Subject> subjects = new List<Subject>();
 
                 foreach (XmlNode subjectNode in subjectNodeList)
                 {
+                    ObservableCollection<Card> sCards = new ObservableCollection<Card>();
                     sID = subjectNode.SelectSingleNode("Subject_ID").InnerText;
                     sName = subjectNode.SelectSingleNode("Subject_Name").InnerText;
 
