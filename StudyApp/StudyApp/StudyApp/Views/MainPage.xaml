@@ -65,7 +65,7 @@
 
         <StackLayout Orientation="Vertical"
                          Padding="25">
-            <Button Text="Practise Subject"      
+            <Button Text="Practice Subject"      
                 x:Name="buttonPractise"
                     Padding="0,0,0,0"
                 Clicked="buttonPractiseClicked"/>
