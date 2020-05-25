@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 namespace StudyApp
 {
+    // This code was taken from the practical repo on GitHub.
     public class BaseViewModel : INotifyPropertyChanged
     {
         public static ModifyData dataManager = new ModifyData();

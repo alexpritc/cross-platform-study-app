@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 namespace StudyApp
 {
     [XmlType]
+    // A subject has a name, id and array of flash cards.
     public class Subject
     {
         public string Id { get; set; }

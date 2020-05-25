@@ -15,6 +15,7 @@ namespace StudyApp
     {
         public static Subject subject;
 
+        // Variables for collecting stats.
         int testLength;
         int currentQuestion = 0;
 
@@ -38,6 +39,7 @@ namespace StudyApp
             }
         }
 
+        // Takes the user back to the main page after getting confirmation.
         private async void buttonCancelClicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Warning", "Are you sure you want to abandon this test?", "Yes", "No");
@@ -48,6 +50,7 @@ namespace StudyApp
             }
         }
 
+        // Displays next question.
         private async void buttonNextClicked(object sender, EventArgs e)
         {
             if (buttonNext.Text == "Begin test!")
@@ -57,6 +60,7 @@ namespace StudyApp
 
             if (currentQuestion < testLength)
             {
+                // Checks if answer matches the question.
                 int displayQuestionNum = currentQuestion + 1;
 
                 string question = subject.Cards[currentQuestion].Question;
@@ -72,6 +76,7 @@ namespace StudyApp
                 currentQuestion++;
                 currentQuestionNumber.Text = displayQuestionNum.ToString();
 
+                // Displays results
                 if (currentQuestion >= testLength)
                 {
                     bool response;

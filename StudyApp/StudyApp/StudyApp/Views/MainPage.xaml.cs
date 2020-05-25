@@ -26,11 +26,13 @@ namespace StudyApp
             listViewSubjects.ItemsSource = viewModel.Subjects;
         }
 
+        // Load new page for creating a subject.
         private async void buttonCreateClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateSubjectPage());
         }
 
+        // Loads a new page for testing the selected subject.
         private async void buttonTestClicked(object sender, EventArgs e)
         {
             if (listViewSubjects.SelectedItem == null)
@@ -53,6 +55,7 @@ namespace StudyApp
             }     
         }
 
+        // Loads a new page for practising the selected subject.
         private async void buttonPractiseClicked(object sender, EventArgs e)
         {
             if (listViewSubjects.SelectedItem == null)
@@ -75,6 +78,7 @@ namespace StudyApp
             }
         }
 
+        // Edits the selected subject.
         private async void buttonEditClicked(object sender, EventArgs e)
         {
             if (listViewSubjects.SelectedItem == null)

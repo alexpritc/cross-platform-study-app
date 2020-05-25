@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyApp
 {
+    // Class used for storing data in an XML format.
     public class StoreData : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -90,6 +91,7 @@ namespace StudyApp
             this.FileName = fn;
         }
 
+        // Saves the list of subjects into the correct XML format.
         public void SaveSubjectsToFile(List<Subject> subjects)
         {
             XmlTextWriter writer = new XmlTextWriter(FileName, Encoding.UTF8);
@@ -111,6 +113,7 @@ namespace StudyApp
             writer.Close();
         }
 
+        // Creates a node for the current subject.
         private void CreateNode(string sID, string sName, Card[] sCards, XmlTextWriter writer)
         {
             writer.WriteStartElement("Subject");

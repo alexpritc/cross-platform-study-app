@@ -35,6 +35,7 @@ namespace StudyApp
             }
         }
 
+        // Sends the user back to the main page.
         private async void buttonCancelClicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Warning", "Are you sure you want to stop practising?", "Yes", "No");
@@ -45,6 +46,7 @@ namespace StudyApp
             }
         }
 
+        // Next flash card is displayed.
         private void buttonNextClicked(object sender, EventArgs e)
         {
             if (current >= subject.Cards.Length - 1)
@@ -64,6 +66,7 @@ namespace StudyApp
                 
         }
 
+        // Previous flash card is displayed.
         private async void buttonPreviousClicked(object sender, EventArgs e)
         {
             buttonReveal.Text = "Reveal Answer";
@@ -95,21 +98,6 @@ namespace StudyApp
 
                 cardDetails.Text = subject.Cards[current].Question;
             }
-        }
-
-        private int GetRandomCard(Card[] cards, int currentCardIndex)
-        {
-            int randomNumber = -1;
-
-            while (randomNumber == -1 || randomNumber == currentCardIndex)
-            {
-                Random random = new Random();
-                randomNumber = random.Next(0, cards.Length);
-            }
-
-            prev = currentCardIndex;
-
-            return randomNumber;
         }
     }
 }

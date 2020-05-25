@@ -12,7 +12,8 @@
             Margin="20,20,20,20"
             HorizontalOptions="Center"
             FontSize="20"/>
-
+            
+            <!-- Display Subject information -->
             <StackLayout Orientation="Horizontal">
                 <Label Text="Testing: "
                 Margin="25,0,0,5"
@@ -25,6 +26,7 @@
                 Style="{DynamicResource ListItemTextStyle}"/>
             </StackLayout>
 
+            <!-- Display question information -->
             <StackLayout Orientation="Horizontal">
                 <Label Text="Question: "
                 Margin="25,0,0,5"
@@ -74,6 +76,7 @@
                 </ListView>
             </Grid>
 
+            <!-- Buttons for question and page navigation-->
             <StackLayout Orientation="Vertical"
                          Margin="25,25,25,25">
                 <Button Text="Next Question"      

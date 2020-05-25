@@ -36,11 +36,13 @@ namespace StudyApp
             listViewSubjectCards.ItemsSource = Cards;
         }
 
+        // Adds a new card to the subject.
         private void buttonAddClicked(object sender, EventArgs e)
         {
             displayCards.Add(new Card() { Question = "", Answer = "" });
         }
 
+        // Removes a card from the subject.
         private void buttonRemoveClicked(object sender, EventArgs e)
         {
             if (displayCards.Count == 0)
@@ -53,6 +55,7 @@ namespace StudyApp
             }
         }
 
+        // Updates the current subject. Changes only save if this button is clicked.
         private async void buttonSaveClicked(object sender, EventArgs e)
         {
             Subject newSubject;
@@ -166,11 +169,13 @@ namespace StudyApp
             }  
         }
 
+        // Sends the user back to the main page with no changes saved.
         private async void buttonCancelClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
         }
 
+        // Asks the user for confirmation before deleting the subject.
         private async void buttonDeleteClicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Warning", "Are you sure you want to delete " + subjectName.Text + "?", "Yes", "No");
@@ -182,6 +187,7 @@ namespace StudyApp
             }
         }
 
+        // Checks if the cards have been updated or changed.
         private bool AreCardsTheSame(Card[] original, Card[] newCards)
         {
             bool areTheSame = true;

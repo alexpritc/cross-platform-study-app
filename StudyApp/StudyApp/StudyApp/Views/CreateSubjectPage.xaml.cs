@@ -26,6 +26,7 @@ namespace StudyApp
             listViewNewSubjectCards.ItemsSource = Cards;
         }
 
+        // Saves the new subject depending on the data the user has inputted.
         private async void buttonSaveClicked(object sender, EventArgs e)
         {
             Subject newSubject;
@@ -64,16 +65,19 @@ namespace StudyApp
             }
         }
 
+        // Sends the user back to the main page.
         private async void buttonCancelClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
         }
 
+        // Adds a new card.
         private void buttonAddClicked(object sender, EventArgs e)
         {
             displayCards.Add(new Card() { Question = "", Answer = "" });
         }
 
+        // Removes cards from the subject.
         private void buttonRemoveClicked(object sender, EventArgs e)
         {
             if (displayCards.Count == 0)

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace StudyApp
 {
+    // This code is taken from the practical repo on GitHub.
     public interface IData<T>
     {
         Task<bool> AddSubjectAsync(T subject);

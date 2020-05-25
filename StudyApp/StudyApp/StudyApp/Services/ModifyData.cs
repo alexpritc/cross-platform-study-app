@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace StudyApp
 {
+    // A class used to modify the data as it stands in type Subject.
     public class ModifyData : IData<Subject>
     {
         public static List<Subject> subjects = new List<Subject>();
@@ -14,6 +15,8 @@ namespace StudyApp
             subjects = App.storageManager.LoadSubjectsFromFile();
         }
 
+
+        
         public async Task<bool> AddSubjectAsync(Subject newSubject)
         {
             subjects.Add(newSubject);
@@ -59,6 +62,8 @@ namespace StudyApp
             return await Task.FromResult(subjects);
         }
 
+
+        // Used for persistent local storage.
         private void Save()
         {
             App.storageManager.SaveSubjectsToFile(subjects);

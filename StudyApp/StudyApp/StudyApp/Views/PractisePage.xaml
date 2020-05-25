@@ -34,6 +34,7 @@
             </StackLayout>
 
             <Grid>
+                <!-- Display the subjects cards -->
                 <Frame x:Name="frameCards"
                         Margin="20,0,20,0"
                        BackgroundColor="WhiteSmoke"
@@ -50,6 +51,7 @@
                 </Frame>
             </Grid>
 
+            <!-- Buttons for nagivation -->
             <StackLayout Orientation="Vertical"
                          Margin="25,25,25,25">
                 <Button Text="Previous Question"      

@@ -39,6 +39,7 @@
                         Clicked="buttonRemoveClicked"/>
             </StackLayout>
 
+            <!-- Displays cards here -->
             <Grid>
                 <ListView x:Name="listViewSubjectCards"
                 Margin="20,0,20,0"
@@ -75,6 +76,7 @@
                 </ListView>
             </Grid>
 
+            <!-- Buttons for page navigation -->
             <StackLayout Orientation="Horizontal"
                          Padding = "25">
                 <Button Text="Cancel"      

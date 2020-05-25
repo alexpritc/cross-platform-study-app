@@ -18,6 +18,7 @@
                 FontSize="18"/>
 
         <Grid>
+            <!-- Display all of the subjects here -->
             <ListView x:Name="listViewSubjects"
                 Margin="20,0,20,0"
                 ItemsSource="{Binding Subject}"
@@ -48,6 +49,7 @@
             </ListView>
         </Grid>
 
+        <!-- Buttons for page navigation -->
         <StackLayout Orientation="Horizontal"
                          Margin="25,0,25,0">
             <Button Text="Create Subject"
